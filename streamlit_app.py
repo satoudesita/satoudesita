@@ -18,6 +18,8 @@ def load_data():
 
 words_df = load_data()
 
+st.write(load_data)
+
 
 # ガチャ機能
 if st.button('ガチャを引く！'):
