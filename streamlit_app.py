@@ -42,7 +42,7 @@ if 'selected_word' in st.session_state:
     st.subheader(f"レア度: {st.session_state.selected_word['レア度']}")
 
     # 意味を確認するボタンを追加
-    if st.button('意味を確認する'):
+    if st.button('解答を確認する'):
         st.session_state.display_meaning = True
 
     if st.session_state.display_meaning:
