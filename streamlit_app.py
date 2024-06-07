@@ -68,10 +68,11 @@ st.write(load_data)
 
 
 # ガチャ機能
-if st.button('ガチャを引く！'):
+if st.button('単語ガチャ'):
+    st.text("わかるかな")
     rarity_probs = {
-        'N': 1.0,
-        
+        'N': 0.5,
+        'R': 0.5,
     }
     chosen_rarity = np.random.choice(list(rarity_probs.keys()), p=list(rarity_probs.values()))
     subset_df = words_df[words_df['レア度'] == chosen_rarity]
@@ -86,7 +87,7 @@ if 'selected_word' in st.session_state:
     st.subheader(f"レア度: {st.session_state.selected_word['レア度']}")
 
     # 意味を確認するボタンを追加
-    if st.button('解答を確認する'):
+    if st.button('意味を確認する'):
         st.session_state.display_meaning = True
 
     if st.session_state.display_meaning:
