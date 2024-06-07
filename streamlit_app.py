@@ -51,8 +51,6 @@ if 'selected_word' in st.session_state:
         
 
 
-st.set_page_config(page_title="英語単語ガチャ")
-
 # タイトルと説明
 st.title('英語単語ガチャ')
 
