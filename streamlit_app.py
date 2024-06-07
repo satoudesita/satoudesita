@@ -91,4 +91,4 @@ if 'selected_word' in st.session_state:
         st.session_state.display_meaning = True
 
     if st.session_state.display_meaning:
-        st.write(f"解答: {st.session_state.selected_word['解答']}")
+        st.write(f"意味: {st.session_state.selected_word['意味']}")
