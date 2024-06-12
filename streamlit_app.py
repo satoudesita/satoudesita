@@ -41,6 +41,26 @@ if 'selected_word' in st.session_state:
     st.header(f"問題: {st.session_state.selected_word['問題']}")
     st.subheader(f"レア度: {st.session_state.selected_word['レア度']}")
 
+    # ユーザーの回答を入力 
+
+    a = st.text_input("あなたの回答を入力してください") 
+
+ 
+
+    # 回答をチェックして結果を表示 
+
+    if a: 
+
+        kaitou = st.session_state.selected_word['解答'] 
+
+        if a == kaitou: 
+
+            st.success("正解です！") 
+
+        else: 
+
+            st.error("不正解です。正しい答えは {} でした。".format(kaitou)) 
+
     # 意味を確認するボタンを追加
     if st.button('解答を確認する'):
         st.session_state.display_meaning = True
@@ -52,43 +72,3 @@ if 'selected_word' in st.session_state:
 
 
 # タイトルと説明
-st.title('英語単語ガチャ')
-
-st.write('英語単語の問題をランダムに表示して、勉強をサポートします！')
-st.write('がんばってください！')
-
-# Load the data
-@st.cache
-def load_data():
-    return pd.read_excel("eigo.xlsx")
-
-words_df = load_data()
-
-st.write(load_data)
-
-
-# ガチャ機能
-if st.button('単語ガチャ'):
-    st.text("わかるかな")
-    rarity_probs = {
-        'N': 0.5,
-        'R': 0.5,
-    }
-    chosen_rarity = np.random.choice(list(rarity_probs.keys()), p=list(rarity_probs.values()))
-    subset_df = words_df[words_df['レア度'] == chosen_rarity]
-    selected_word = subset_df.sample().iloc[0]
-    
-    # セッションステートに選択された単語を保存
-    st.session_state.selected_word = selected_word
-    st.session_state.display_meaning = False
-
-if 'selected_word' in st.session_state:
-    st.header(f"問題: {st.session_state.selected_word['問題']}")
-    st.subheader(f"レア度: {st.session_state.selected_word['レア度']}")
-
-    # 意味を確認するボタンを追加
-    if st.button('意味を確認する'):
-        st.session_state.display_meaning = True
-
-    if st.session_state.display_meaning:
-        st.write(f"意味: {st.session_state.selected_word['意味']}")
