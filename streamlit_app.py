@@ -53,7 +53,7 @@ if 'selected_word' in st.session_state:
 
         kaitou = st.session_state.selected_word['解答'] 
 
-        if str(a) == kaitou: 
+        if a == str(kaitou): 
 
             st.success("正解です！") 
 
