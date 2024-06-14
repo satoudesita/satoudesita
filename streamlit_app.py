@@ -40,10 +40,12 @@ if st.button('ガチャを引く！'):
 if 'selected_word' in st.session_state:
     st.header(f"問題: {st.session_state.selected_word['問題']}")
     st.subheader(f"レア度: {st.session_state.selected_word['レア度']}")
-
+    
     # ユーザーの回答を入力 
 
-    a = st.text_input("あなたの回答を入力してください") 
+if st.button('回答を入力する'):
+    a = st.text_input("あなたの回答を入力してください")
+
 
  
 
@@ -59,14 +61,17 @@ if 'selected_word' in st.session_state:
 
         else: 
 
-            st.error("不正解です。正しい答えは {} でした。".format(kaitou)) 
+            st.error("不正解です。正しい答えは" +str(kaitou)+ "でした。")
+
+
 
     # 意味を確認するボタンを追加
-    if st.button('解答を確認する'):
+if st.button('解答を確認する'):
         st.session_state.display_meaning = True
 
-    if st.session_state.display_meaning:
-        st.write(f"解答: {st.session_state.selected_word['解答']}")
+        if st.session_state.display_meaning:
+            st.write(f"解答: {st.session_state.selected_word['解答']}")
+
 
         
 
