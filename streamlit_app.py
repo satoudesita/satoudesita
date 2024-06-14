@@ -43,7 +43,7 @@ if 'selected_word' in st.session_state:
     
     # ユーザーの回答を入力 
 
-if st.button('回答を入力する'):
+if st.button('解を確認する'):
     a = st.text_input("あなたの回答を入力してください")
 
 
